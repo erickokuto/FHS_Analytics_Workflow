@@ -1,0 +1,13 @@
+# Run from the application folder after installing packages.
+source('R/core.R');source('R/importance.R');source('R/plots.R')
+library(plotly);library(shiny);library(survival)
+x <- fhs_prepare(fhs_load('fhs.csv'))
+stopifnot(inherits(fhs_plot_hist(x,'sysbp1','Histogram'),'plotly'))
+stopifnot(inherits(fhs_plot_box(x,'sysbp1','sex1','Box'),'plotly'))
+stopifnot(inherits(fhs_plot_density(x,'sysbp1','sex1','Density'),'plotly'))
+stopifnot(inherits(fhs_plot_scatter(x,'age1','sysbp1','sex1','Scatter'),'plotly'))
+d <- fhs_survival_frame(x,'anychd','sex1',TRUE)
+stopifnot(inherits(fhs_plot_survival(fhs_km(d,'sex1')),'plotly'))
+cl <- fhs_cluster(x,c('age1','sysbp1','bmi1'),c('K-means'),3)
+stopifnot(inherits(fhs_plot_pca(cl$plots[['K-means']],'PCA'),'plotly'))
+cat('Plot smoke tests passed.\n')

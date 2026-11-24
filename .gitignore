@@ -1,0 +1,24 @@
+.Rhistory
+.RData
+.Ruserdata
+.Renviron
+.Rproj.user/
+rsconnect/
+.env
+.env.*
+*.log
+*.tmp
+
+# Local state and deployment metadata
+*.Rcheck/
+renv/library/
+renv/staging/
+# Do not publish credentials or downloaded datasets without review
+*Connect_To_Shiny_io.R
+*Connect_To_Shinyapps_IO.R
+*_secrets.R
+*_credentials.R
+.DS_Store
+Thumbs.db
+
+fhs.csv
